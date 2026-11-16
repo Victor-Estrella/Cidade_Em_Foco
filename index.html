@@ -3,25 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cidade em Foco</title>
+  <meta name="description" content="Cidade em Foco — acompanhe problemas urbanos e participe da melhoria da sua cidade.">
+  <title>Cidade em Foco | Sua cidade, em movimento</title>
 </head>
 <body>
-  <header>
-    <a href="index.html">Cidade em Foco</a>
-    <nav>
-      <a href="index.html">Início</a>
-    </nav>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Cidade em Foco, página inicial">
+        <span>Cidade<span class="brand-light">em Foco</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="active" href="index.html">Início</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h1>Uma cidade melhor começa quando alguém participa.</h1>
-      <p>Viu um problema no seu bairro? Registre, acompanhe e ajude a dar visibilidade ao que precisa mudar.</p>
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">CIDADANIA QUE TRANSFORMA</span>
+          <h1>Uma cidade melhor começa quando <em>alguém participa.</em></h1>
+          <p>Viu um problema no seu bairro? Registre, acompanhe e ajude a dar visibilidade ao que precisa mudar.</p>
+          <div class="hero-proof">
+            <span><strong>Participação coletiva</strong><br>Pequenas ações geram mudanças reais.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="container stats-grid">
+        <div class="section-kicker">ACOMPANHE DE PERTO</div>
+        <div class="stat-item"><strong id="stat-total">0</strong><span>ocorrências registradas</span></div>
+        <div class="stat-item"><strong id="stat-open">0</strong><span>em aberto ou análise</span></div>
+        <div class="stat-item"><strong id="stat-resolved">0</strong><span>resolvidas</span></div>
+      </div>
+    </section>
+
+    <section class="participate-band">
+      <div class="container participate-inner">
+        <div>
+          <span class="eyebrow eyebrow-light">FAÇA PARTE DA MUDANÇA</span>
+          <h2>Você conhece seu bairro melhor do que ninguém.</h2>
+          <p>Compartilhe o que precisa de atenção. Acompanhar começa com registrar.</p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Cidade em Foco · Projeto acadêmico FIAP</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-footer" href="index.html">
+        <span>Cidade<span class="brand-light">em Foco</span></span>
+      </a>
+      <p>A cidade melhora quando todos participam.</p>
+      <span class="footer-copy">© 2026 Cidade em Foco · Projeto acadêmico FIAP</span>
+    </div>
   </footer>
 </body>
 </html>
