@@ -3,25 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulte e filtre ocorrências urbanas registradas pela comunidade.">
   <title>Ocorrências | Cidade em Foco</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
-<body>
+<body data-page="occurrences">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html" aria-label="Cidade em Foco, página inicial">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
         <span>Cidade<span class="brand-light">em Foco</span></span>
       </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
       <nav class="main-nav" aria-label="Navegação principal">
         <a href="index.html">Início</a>
+        <a class="active" href="ocorrencias.html">Ocorrências</a>
+        <a href="registrar.html">Registrar problema</a>
       </nav>
+      <a class="nav-cta" href="registrar.html">+ Nova ocorrência</a>
     </div>
   </header>
 
-  <main id="conteudo" class="container page-simple">
-    <h1>Ocorrências da cidade.</h1>
-    <p>Encontre problemas registrados e acompanhe o andamento.</p>
-    <p>Página em construção.</p>
+  <main id="conteudo">
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div>
+          <span class="eyebrow"><span class="pulse-dot"></span> TRANSPARÊNCIA E PARTICIPAÇÃO</span>
+          <h1>Ocorrências da <em>cidade.</em></h1>
+          <p>Encontre problemas registrados, acompanhe o andamento e veja onde a comunidade precisa de atenção.</p>
+        </div>
+        <div class="page-hero-mark" aria-hidden="true">◎</div>
+      </div>
+    </section>
+
+    <section class="container section occurrences-section">
+      <div class="results-top">
+        <div>
+          <span class="eyebrow">PAINEL DA COMUNIDADE</span>
+          <h2>Registros recentes</h2>
+        </div>
+        <span id="results-count" class="results-count">0 ocorrências</span>
+      </div>
+      <div class="filter-panel">
+        <div class="filter-search">
+          <label for="search-occurrence">Buscar ocorrência</label>
+          <input id="search-occurrence" type="search" placeholder="Ex.: poste, calçada, praça...">
+        </div>
+        <div>
+          <label for="filter-category">Categoria</label>
+          <select id="filter-category">
+            <option value="">Todas as categorias</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-status">Status</label>
+          <select id="filter-status">
+            <option value="">Todos os status</option>
+            <option value="ABERTA">Aberta</option>
+            <option value="EM_ANALISE">Em análise</option>
+            <option value="EM_ATENDIMENTO">Em atendimento</option>
+            <option value="RESOLVIDA">Resolvida</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-neighborhood">Bairro</label>
+          <input id="filter-neighborhood" type="text" placeholder="Digite um bairro">
+        </div>
+        <button id="clear-filters" class="button button-outline filter-clear" type="button">Limpar filtros</button>
+      </div>
+      <div id="occurrence-list" class="occurrence-list" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span>⌕</span>
+        <h3>Nenhuma ocorrência encontrada</h3>
+        <p>Tente alterar os filtros ou registre um novo problema.</p>
+        <a class="button button-primary" href="registrar.html">Registrar ocorrência</a>
+      </div>
+      <p class="demo-note"><span>ⓘ</span> Os registros são demonstrativos. Este protótipo não envia solicitações à prefeitura.</p>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-footer" href="index.html">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Cidade<span class="brand-light">em Foco</span></span>
+      </a>
+      <p>A cidade melhora quando todos participam.</p>
+      <span class="footer-copy">© 2026 Cidade em Foco · Projeto acadêmico FIAP</span>
+    </div>
+  </footer>
 </body>
 </html>
