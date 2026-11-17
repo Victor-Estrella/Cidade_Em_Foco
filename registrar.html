@@ -3,25 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registre um problema urbano e ajude a melhorar sua cidade.">
   <title>Registrar ocorrência | Cidade em Foco</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
-<body>
+<body data-page="register">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html" aria-label="Cidade em Foco, página inicial">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
         <span>Cidade<span class="brand-light">em Foco</span></span>
       </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
       <nav class="main-nav" aria-label="Navegação principal">
         <a href="index.html">Início</a>
+        <a href="ocorrencias.html">Ocorrências</a>
+        <a class="active" href="registrar.html">Registrar problema</a>
       </nav>
+      <a class="nav-cta" href="registrar.html">+ Nova ocorrência</a>
     </div>
   </header>
 
-  <main id="conteudo" class="container page-simple">
-    <h1>Registrar um problema</h1>
-    <p>Conte para a comunidade o que precisa de atenção no seu bairro.</p>
-    <p>Página em construção.</p>
+  <main id="conteudo">
+    <section class="page-hero register-hero">
+      <div class="container page-hero-inner">
+        <div>
+          <span class="eyebrow"><span class="pulse-dot"></span> SUA PARTICIPAÇÃO IMPORTA</span>
+          <h1>Vamos cuidar do <em>seu bairro?</em></h1>
+          <p>Conte para a comunidade o que precisa de atenção. Preencha os dados abaixo para registrar uma ocorrência.</p>
+        </div>
+        <div class="page-hero-mark" aria-hidden="true">＋</div>
+      </div>
+    </section>
+
+    <section class="container form-layout section">
+      <aside class="form-aside">
+        <span class="aside-number">01 / REGISTRO</span>
+        <h2>Uma cidade melhor começa com informação.</h2>
+        <p>Descreva o problema com clareza. Assim, outras pessoas conseguem entender a situação e acompanhar o registro.</p>
+        <div class="aside-tip">
+          <span>✳</span>
+          <div>
+            <strong>Dica para um bom registro</strong>
+            <p>Informe um endereço fácil de localizar e explique o que está acontecendo.</p>
+          </div>
+        </div>
+        <div class="aside-disclaimer">Este é um protótipo acadêmico. O registro fica salvo apenas neste navegador e não é enviado a órgãos públicos.</div>
+      </aside>
+
+      <div class="form-card">
+        <div class="form-card-heading">
+          <div>
+            <span class="eyebrow">FORMULÁRIO</span>
+            <h2>Nova ocorrência</h2>
+          </div>
+          <span class="required-note">* Campos obrigatórios</span>
+        </div>
+        <div id="form-feedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
+        <form id="occurrence-form" novalidate>
+          <fieldset>
+            <legend>Sobre você</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="citizen-name">Nome completo <span>*</span></label>
+                <input id="citizen-name" name="citizenName" type="text" autocomplete="name" required minlength="3" placeholder="Como podemos te chamar?">
+                <small class="field-error" id="error-citizen-name"></small>
+              </div>
+              <div class="field">
+                <label for="citizen-email">E-mail <span>*</span></label>
+                <input id="citizen-email" name="citizenEmail" type="email" autocomplete="email" required placeholder="voce@email.com">
+                <small class="field-error" id="error-citizen-email"></small>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Sobre o problema</legend>
+            <div class="field">
+              <label for="title">Título da ocorrência <span>*</span></label>
+              <input id="title" name="title" type="text" required minlength="5" maxlength="70" placeholder="Ex.: Poste de iluminação apagado">
+              <small class="field-error" id="error-title"></small>
+            </div>
+            <div class="field">
+              <label for="description">Descreva o que está acontecendo <span>*</span></label>
+              <textarea id="description" name="description" rows="4" required minlength="15" maxlength="500" placeholder="Conte o que aconteceu, desde quando e como isso afeta o bairro..."></textarea>
+              <div class="field-meta"><small class="field-error" id="error-description"></small><small id="description-counter">0/500</small></div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="category">Categoria <span>*</span></label>
+                <select id="category" name="category" required>
+                  <option value="">Selecione uma categoria</option>
+                </select>
+                <small class="field-error" id="error-category"></small>
+              </div>
+              <div class="field">
+                <label for="severity">Gravidade <span>*</span></label>
+                <select id="severity" name="severity" required>
+                  <option value="">Selecione</option>
+                  <option value="1">Baixa</option>
+                  <option value="2">Média</option>
+                  <option value="3">Alta</option>
+                </select>
+                <small class="field-error" id="error-severity"></small>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="address">Endereço <span>*</span></label>
+                <input id="address" name="address" type="text" required placeholder="Rua, avenida, número ou referência">
+                <small class="field-error" id="error-address"></small>
+              </div>
+              <div class="field">
+                <label for="neighborhood">Bairro <span>*</span></label>
+                <input id="neighborhood" name="neighborhood" type="text" required placeholder="Nome do bairro">
+                <small class="field-error" id="error-neighborhood"></small>
+              </div>
+            </div>
+            <div class="field field-short">
+              <label for="people">Pessoas afetadas (estimativa) <span>*</span></label>
+              <input id="people" name="people" type="number" min="1" max="100000" required placeholder="Ex.: 20">
+              <small class="field-error" id="error-people"></small>
+            </div>
+          </fieldset>
+          <div class="form-actions">
+            <p>Ao registrar, você ajuda a dar visibilidade ao problema.</p>
+            <button class="button button-primary" type="submit">Enviar ocorrência <span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-footer" href="index.html">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Cidade<span class="brand-light">em Foco</span></span>
+      </a>
+      <p>A cidade melhora quando todos participam.</p>
+      <span class="footer-copy">© 2026 Cidade em Foco · Projeto acadêmico FIAP</span>
+    </div>
+  </footer>
 </body>
 </html>
