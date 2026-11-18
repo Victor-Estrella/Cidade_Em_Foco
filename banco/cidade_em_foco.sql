@@ -1,7 +1,9 @@
 /*
   CIDADE EM FOCO
   Global Solution 2026/2 - FIAP
-  Banco de dados: Oracle Database (SQL Developer)
+  Victor Henrique Estrella Carracci - RM 576066
+  Gustavo de Oliveira Turci Sandrini - RM 575872
+
 
   Modelo: 5 tabelas
   - USUARIO
@@ -19,7 +21,6 @@
 -- =========================================================
 -- 1. LIMPEZA (opcional)
 -- Execute somente se quiser apagar uma instalacao anterior.
--- Descomente as linhas abaixo na ordem apresentada.
 -- =========================================================
 -- DROP TABLE ATUALIZACAO CASCADE CONSTRAINTS;
 -- DROP TABLE CONFIRMACAO CASCADE CONSTRAINTS;
@@ -359,7 +360,3 @@ INNER JOIN USUARIO U
     ON A.ID_USUARIO = U.ID_USUARIO
 WHERE O.ID_OCORRENCIA = 1
 ORDER BY A.DATA_ATUALIZACAO;
-
--- =========================================================
--- FIM DO SCRIPT
--- =========================================================
