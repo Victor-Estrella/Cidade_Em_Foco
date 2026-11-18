@@ -32,6 +32,15 @@ Sistema de console com cadastro, listagem, busca por ID, atualização, atualiza
 
 O arquivo `banco/cidade_em_foco.sql` cria as 5 tabelas (`USUARIO`, `CATEGORIA`, `OCORRENCIA`, `CONFIRMACAO`, `ATUALIZACAO`), insere dados de exemplo e traz consultas com `JOIN`, incluindo o cálculo de prioridade. Foi feito para o Oracle (SQL Developer). O diagrama está em `banco/der.png`.
 
+## Uso de IA
+
+Usamos o **Claude Code** como apoio durante o desenvolvimento:
+
+- ajudar a estruturar o CSS;
+- revisar a escrita dos READMEs.
+
+O domínio, o modelo de dados, o diagrama ER, a identidade visual e as decisões do projeto são do grupo. Todo o código foi revisado e testado por nós: rodamos o Java no console, o script no SQL Developer e o site no celular e no desktop.
+
 ## Estrutura
 
 ```
