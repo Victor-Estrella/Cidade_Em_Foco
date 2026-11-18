@@ -67,7 +67,7 @@ function criarCardOcorrencia(item, compacto) {
   const meta = document.createElement("div");
   meta.className = "occurrence-meta";
   const local = document.createElement("span");
-  local.textContent = `⌖ ${item.bairro}`;
+  local.textContent = `⌖ ${item.localizacao || "Local não informado"}`;
   const data = document.createElement("span");
   data.textContent = `◷ ${formatarData(item.dataCadastro)}`;
   const confirmacoes = document.createElement("span");
@@ -96,7 +96,7 @@ function configurarOcorrencias() {
   const busca = document.getElementById("search-occurrence");
   const categoria = document.getElementById("filter-category");
   const status = document.getElementById("filter-status");
-  const bairro = document.getElementById("filter-neighborhood");
+  const localizacao = document.getElementById("filter-location");
   const limpar = document.getElementById("clear-filters");
   const lista = document.getElementById("occurrence-list");
 
@@ -111,14 +111,15 @@ function configurarOcorrencias() {
     const termo = busca.value.trim().toLocaleLowerCase("pt-BR");
     const categoriaSelecionada = categoria.value;
     const statusSelecionado = status.value;
-    const bairroDigitado = bairro.value.trim().toLocaleLowerCase("pt-BR");
+    const localDigitado = localizacao.value.trim().toLocaleLowerCase("pt-BR");
 
     const filtradas = carregarOcorrencias().filter(item => {
-      const texto = `${item.titulo} ${item.descricao} ${item.endereco} ${item.bairro}`.toLocaleLowerCase("pt-BR");
+      const local = String(item.localizacao || "").toLocaleLowerCase("pt-BR");
+      const texto = `${item.titulo} ${item.descricao} ${local}`.toLocaleLowerCase("pt-BR");
       return (!termo || texto.includes(termo))
         && (!categoriaSelecionada || String(item.categoriaId) === categoriaSelecionada)
         && (!statusSelecionado || item.status === statusSelecionado)
-        && (!bairroDigitado || item.bairro.toLocaleLowerCase("pt-BR").includes(bairroDigitado));
+        && (!localDigitado || local.includes(localDigitado));
     }).sort((a, b) => b.dataCadastro.localeCompare(a.dataCadastro));
 
     lista.replaceChildren();
@@ -127,14 +128,14 @@ function configurarOcorrencias() {
     document.getElementById("empty-state").hidden = filtradas.length !== 0;
   }
 
-  [busca, categoria, status, bairro].forEach(campo => {
+  [busca, categoria, status, localizacao].forEach(campo => {
     campo.addEventListener(campo.tagName === "SELECT" ? "change" : "input", renderizar);
   });
   limpar.addEventListener("click", function () {
     busca.value = "";
     categoria.value = "";
     status.value = "";
-    bairro.value = "";
+    localizacao.value = "";
     renderizar();
   });
   renderizar();
@@ -158,7 +159,7 @@ function configurarFormulario() {
     contador.textContent = `${descricao.value.length}/500`;
   });
 
-  const campos = ["citizen-name", "citizen-email", "title", "description", "category", "severity", "address", "neighborhood", "people"];
+  const campos = ["citizen-name", "citizen-email", "title", "description", "category", "severity", "location", "people"];
 
   function mostrarErro(id, mensagem) {
     const campo = document.getElementById(id);
@@ -175,8 +176,7 @@ function configurarFormulario() {
     const email = document.getElementById("citizen-email").value.trim();
     const titulo = document.getElementById("title").value.trim();
     const texto = descricao.value.trim();
-    const endereco = document.getElementById("address").value.trim();
-    const bairro = document.getElementById("neighborhood").value.trim();
+    const local = document.getElementById("location").value.trim();
     const pessoas = Number(document.getElementById("people").value);
 
     const regras = [
@@ -186,8 +186,7 @@ function configurarFormulario() {
       ["description", texto.length >= 15, "Descreva o problema com pelo menos 15 caracteres."],
       ["category", Boolean(selectCategoria.value), "Selecione uma categoria."],
       ["severity", Boolean(document.getElementById("severity").value), "Selecione a gravidade."],
-      ["address", endereco.length >= 5, "Informe um endereço válido."],
-      ["neighborhood", bairro.length >= 2, "Informe o bairro."],
+      ["location", local.length >= 5, "Informe a localização (mínimo de 5 caracteres)."],
       ["people", Number.isInteger(pessoas) && pessoas >= 1 && pessoas <= 100000, "Informe uma quantidade entre 1 e 100.000."]
     ];
 
@@ -230,8 +229,7 @@ function configurarFormulario() {
       id: registros.length ? Math.max(...registros.map(item => Number(item.id))) + 1 : 1,
       titulo: document.getElementById("title").value.trim(),
       descricao: descricao.value.trim(),
-      endereco: document.getElementById("address").value.trim(),
-      bairro: document.getElementById("neighborhood").value.trim(),
+      localizacao: document.getElementById("location").value.trim(),
       categoriaId: Number(selectCategoria.value),
       gravidade: Number(document.getElementById("severity").value),
       pessoasAfetadas: Number(document.getElementById("people").value),

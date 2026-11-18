@@ -48,7 +48,7 @@
           <span>✳</span>
           <div>
             <strong>Dica para um bom registro</strong>
-            <p>Informe um endereço fácil de localizar e explique o que está acontecendo.</p>
+            <p>Informe uma localização fácil de encontrar e explique o que está acontecendo.</p>
           </div>
         </div>
         <div class="aside-disclaimer">Este é um protótipo acadêmico. O registro fica salvo apenas neste navegador e não é enviado a órgãos públicos.</div>
@@ -110,17 +110,10 @@
                 <small class="field-error" id="error-severity"></small>
               </div>
             </div>
-            <div class="form-grid">
-              <div class="field">
-                <label for="address">Endereço <span>*</span></label>
-                <input id="address" name="address" type="text" required placeholder="Rua, avenida, número ou referência">
-                <small class="field-error" id="error-address"></small>
-              </div>
-              <div class="field">
-                <label for="neighborhood">Bairro <span>*</span></label>
-                <input id="neighborhood" name="neighborhood" type="text" required placeholder="Nome do bairro">
-                <small class="field-error" id="error-neighborhood"></small>
-              </div>
+            <div class="field">
+              <label for="location">Localização <span>*</span></label>
+              <input id="location" name="location" type="text" required maxlength="180" placeholder="Rua, número, bairro ou ponto de referência">
+              <small class="field-error" id="error-location"></small>
             </div>
             <div class="field field-short">
               <label for="people">Pessoas afetadas (estimativa) <span>*</span></label>
