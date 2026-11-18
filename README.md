@@ -14,7 +14,9 @@ O mesmo domínio aparece nas três partes: **ocorrência**, **categoria**, **usu
 
 ## Web
 
-Clone o repositório e abra o `index.html` no navegador. Não precisa instalar nada.
+**Site no ar:** https://victor-estrella.github.io/Cidade_Em_Foco/
+
+Para rodar localmente, clone o repositório e abra o `index.html` no navegador. Não precisa instalar nada.
 
 - **Início** (`index.html`): apresentação, contadores e as ocorrências mais recentes.
 - **Ocorrências** (`ocorrencias.html`): lista com filtro por texto, categoria, status e localização.
