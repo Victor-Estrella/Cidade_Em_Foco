@@ -4,6 +4,15 @@ Plataforma onde o cidadão registra problemas do seu bairro (buraco na rua, post
 
 O mesmo domínio aparece nas três partes: **ocorrência**, **categoria**, **usuário**, **confirmação** e **atualização** de status. As partes são entregues separadas, sem integração entre elas.
 
+## Integrantes
+
+- Victor Henrique Estrella Carracci - RM 576066
+- Gustavo de Oliveira Turci Sandrini - RM 575872
+
+## Vídeo
+
+https://youtu.be/AoI9jKeszpQ
+
 ## Partes do projeto
 
 | Parte | Pasta | O que tem |
@@ -38,6 +47,8 @@ Usamos o **Claude Code** como apoio durante o desenvolvimento:
 
 - ajudar a estruturar o CSS;
 - revisar a escrita dos READMEs.
+
+Usamos o **Gemini** para gerar a introdução do vídeo.
 
 O domínio, o modelo de dados, o diagrama ER, a identidade visual e as decisões do projeto são do grupo. Todo o código foi revisado e testado por nós: rodamos o Java no console, o script no SQL Developer e o site no celular e no desktop.
 
